@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 3 - Objeto Persona</title>
+  <link rel="stylesheet" href="../assets/styles/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Ejercicio 3: Objeto Persona</h1>
+    <div class="enunciado">
+      Declara un objeto persona con varios tipos de datos (incluidos array y objeto anidado). Muestra el contenido con <code>console.log</code> y <code>console.table</code>.
+    </div>
+
+    <button onclick="mostrarPersona()">Mostrar Objeto Persona</button>
+    <div id="resultado" class="resultado-capa">Aún no se ha mostrado la información.</div>
+  </div>
+
+  <script>
+    function mostrarPersona() {
+      const persona = {
+        nombre: "María",
+        edad: 28,
+        esEstudiante: false,
+        aficiones: ["Lectura", "Programación", "Ciclismo"],
+        direccion: {
+          ciudad: "Granada",
+          codigoPostal: "18001"
+        }
+      };
+
+      console.log("Objeto persona completo:", persona);
+      console.table(persona);
+
+      document.getElementById("resultado").innerText = JSON.stringify(persona, null, 2);
+    }
+  </script>
+</body>
+</html>

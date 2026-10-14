@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 9 - Revertir Cadena</title>
+  <link rel="stylesheet" href="../assets/styles/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Ejercicio 9: Revertir una Cadena</h1>
+    <div class="enunciado">Invierte una cadena usando los métodos <code>split()</code>, <code>reverse()</code> y <code>join()</code>.</div>
+
+    <div class="form-group">
+      <label for="cadena">Introduce una texto:</label>
+      <input type="text" id="cadena" placeholder="Ej: Desarrollo Web">
+    </div>
+    <button onclick="procesarInversion()">Invertir</button>
+
+    <div id="resultado" class="resultado-capa">Resultado...</div>
+  </div>
+
+  <script>
+    function invertirCadena(str) {
+      return str.split("").reverse().join("");
+    }
+
+    function procesarInversion() {
+      const texto = document.getElementById("cadena").value;
+      const invertido = invertirCadena(texto);
+      document.getElementById("resultado").innerText = `Original: ${texto}\nInvertido: ${invertido}`;
+    }
+  </script>
+</body>
+</html>

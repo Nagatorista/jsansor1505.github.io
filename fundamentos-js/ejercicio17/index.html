@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 17 - Ordenar Números</title>
+  <link rel="stylesheet" href="../assets/styles/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Ejercicio 17: Ordenar Array de Menor a Mayor</h1>
+    <div class="enunciado">Ordena numéricamente un conjunto de datos usando el método <code>sort()</code> y una función comparadora.</div>
+
+    <div class="form-group">
+      <label for="numeros">Números a ordenar (separados por coma):</label>
+      <input type="text" id="numeros" value="40, 100, 1, 5, 25, 10">
+    </div>
+    <button onclick="ordenarNumeros()">Ordenar</button>
+
+    <div id="resultado" class="resultado-capa">Resultado...</div>
+  </div>
+
+  <script>
+    function ordenarNumeros() {
+      const input = document.getElementById("numeros").value;
+      const arrayNums = input.split(",").map(n => Number(n.trim())).filter(n => !isNaN(n));
+      
+      const ordenados = [...arrayNums].sort((a, b) => a - b);
+
+      document.getElementById("resultado").innerText = 
+        `Original: [${arrayNums.join(", ")}]\n` +
+        `Ordenados: [${ordenados.join(", ")}]`;
+    }
+  </script>
+</body>
+</html>

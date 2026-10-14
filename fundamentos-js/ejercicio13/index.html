@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 13 - Contar Palabras</title>
+  <link rel="stylesheet" href="../assets/styles/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Ejercicio 13: Contar Palabras en una Frase</h1>
+    <div class="enunciado">Cuenta cuántas palabras contiene una frase ingresada utilizando el método <code>split()</code>.</div>
+
+    <div class="form-group">
+      <label for="frase">Escribe una frase:</label>
+      <input type="text" id="frase" placeholder="Ej: Aprender JavaScript es divertido">
+    </div>
+    <button onclick="procesarPalabras()">Contar Palabras</button>
+
+    <div id="resultado" class="resultado-capa">Resultado...</div>
+  </div>
+
+  <script>
+    function contarPalabras(texto) {
+      const limpio = texto.trim();
+      if (!limpio) return 0;
+      return limpio.split(/\s+/).length;
+    }
+
+    function procesarPalabras() {
+      const frase = document.getElementById("frase").value;
+      const total = contarPalabras(frase);
+      document.getElementById("resultado").innerText = `La frase contiene ${total} palabra(s).`;
+    }
+  </script>
+</body>
+</html>

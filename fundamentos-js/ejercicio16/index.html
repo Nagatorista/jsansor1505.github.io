@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 16 - Grados Celsius a Fahrenheit</title>
+  <link rel="stylesheet" href="../assets/styles/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Ejercicio 16: Conversor de Temperatura</h1>
+    <div class="enunciado">Convierte grados Celsius a Fahrenheit utilizando la fórmula: <code>(C * 9/5) + 32</code>.</div>
+
+    <div class="form-group">
+      <label for="celsius">Grados Celsius (°C):</label>
+      <input type="number" id="celsius" value="25">
+    </div>
+    <button onclick="convertirGrados()">Convertir</button>
+
+    <div id="resultado" class="resultado-capa">Resultado...</div>
+  </div>
+
+  <script>
+    function celsiusAFahrenheit(celsius) {
+      return (celsius * 9 / 5) + 32;
+    }
+
+    function convertirGrados() {
+      const c = Number(document.getElementById("celsius").value);
+      const f = celsiusAFahrenheit(c);
+      document.getElementById("resultado").innerText = `${c} °C equivale a ${f.toFixed(2)} °F`;
+    }
+  </script>
+</body>
+</html>

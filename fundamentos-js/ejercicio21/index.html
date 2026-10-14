@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 21 - Filtrar Mayores que Valor</title>
+  <link rel="stylesheet" href="../assets/styles/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Ejercicio 21: Filtrar Números Mayores que X</h1>
+    <div class="enunciado">Devuelve un nuevo arreglo filtrado con los valores superiores a un umbral dado utilizando <code>filter()</code>.</div>
+
+    <div class="form-group">
+      <label for="numeros">Lista de números (separados por comas):</label>
+      <input type="text" id="numeros" value="5, 12, 8, 130, 44, 3">
+      
+      <label for="corte">Filtrar números mayores que:</label>
+      <input type="number" id="corte" value="10">
+    </div>
+    <button onclick="procesarFiltrado()">Filtrar</button>
+
+    <div id="resultado" class="resultado-capa">Resultado...</div>
+  </div>
+
+  <script>
+    function filtrarMayores(arr, limite) {
+      return arr.filter(n => n > limite);
+    }
+
+    function procesarFiltrado() {
+      const input = document.getElementById("numeros").value;
+      const limite = Number(document.getElementById("corte").value);
+      const arrayNums = input.split(",").map(n => Number(n.trim())).filter(n => !isNaN(n));
+      
+      const filtrados = filtrarMayores(arrayNums, limite);
+
+      document.getElementById("resultado").innerText = 
+        `Array original: [${arrayNums.join(", ")}]\n` +
+        `Mayores que ${limite}: [${filtrados.join(", ")}]`;
+    }
+  </script>
+</body>
+</html>

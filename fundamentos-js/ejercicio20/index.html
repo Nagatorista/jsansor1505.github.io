@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 20 - Conversión de Texto</title>
+  <link rel="stylesheet" href="../assets/styles/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Ejercicio 20: Mayúsculas y Minúsculas</h1>
+    <div class="enunciado">Transforma un texto tanto a mayúsculas como a minúsculas usando <code>toUpperCase()</code> y <code>toLowerCase()</code>.</div>
+
+    <div class="form-group">
+      <label for="texto">Ingresa un texto:</label>
+      <input type="text" id="texto" value="Aprendiendo JavaScript">
+    </div>
+    <button onclick="convertirTexto()">Transformar</button>
+
+    <div id="resultado" class="resultado-capa">Resultado...</div>
+  </div>
+
+  <script>
+    function transformarCadena(cadena) {
+      return {
+        mayusculas: cadena.toUpperCase(),
+        minusculas: cadena.toLowerCase()
+      };
+    }
+
+    function convertirTexto() {
+      const txt = document.getElementById("texto").value;
+      const res = transformarCadena(txt);
+      document.getElementById("resultado").innerText = 
+        `MAYÚSCULAS: ${res.mayusculas}\n` +
+        `MINÚSCULAS: ${res.minusculas}`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 2 - Array de 100 Números</title>
+  <link rel="stylesheet" href="../assets/styles/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Ejercicio 2: Array Aleatorio y Filtrado</h1>
+    <div class="enunciado">
+      Declara un array de 100 números con valores al azar. Muestra el contenido con <code>console.table</code> y realiza un filtrado (por ejemplo, números entre 20 y 50).
+    </div>
+
+    <div class="form-group">
+      <label>Rango mínimo:</label>
+      <input type="number" id="min" value="20">
+      <label>Rango máximo:</label>
+      <input type="number" id="max" value="50">
+    </div>
+    <button onclick="generarYFiltrar()">Generar y Filtrar</button>
+
+    <div id="resultado" class="resultado-capa">Esperando acción...</div>
+  </div>
+
+  <script>
+    function generarYFiltrar() {
+      const min = Number(document.getElementById("min").value);
+      const max = Number(document.getElementById("max").value);
+
+      const numeros = Array.from({ length: 100 }, () => Math.floor(Math.random() * 100) + 1);
+      
+      console.log("Array original:");
+      console.table(numeros);
+
+      const filtrados = numeros.filter(num => num >= min && num <= max);
+
+      console.log(`Valores filtrados entre ${min} y ${max}:`);
+      console.table(filtrados);
+
+      document.getElementById("resultado").innerText = 
+        `Total de elementos: 100\n` +
+        `Elementos entre ${min} y ${max} (${filtrados.length} encontrados):\n` +
+        JSON.stringify(filtrados);
+    }
+  </script>
+</body>
+</html>

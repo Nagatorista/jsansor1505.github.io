@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 18 - Palabra más Larga</title>
+  <link rel="stylesheet" href="../assets/styles/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Ejercicio 18: Palabra más Larga</h1>
+    <div class="enunciado">Encuentra la palabra de mayor longitud dentro de una frase ingresada por el usuario.</div>
+
+    <div class="form-group">
+      <label for="frase">Frase:</label>
+      <input type="text" id="frase" value="El desarrollo web con Javascript es genial">
+    </div>
+    <button onclick="procesarPalabraLarga()">Encontrar Palabra</button>
+
+    <div id="resultado" class="resultado-capa">Resultado...</div>
+  </div>
+
+  <script>
+    function encontrarPalabraMasLarga(frase) {
+      const palabras = frase.trim().split(/\s+/);
+      let masLarga = "";
+      for (const palabra of palabras) {
+        if (palabra.length > masLarga.length) {
+          masLarga = palabra;
+        }
+      }
+      return masLarga;
+    }
+
+    function procesarPalabraLarga() {
+      const frase = document.getElementById("frase").value;
+      const palabraLarga = encontrarPalabraMasLarga(frase);
+      document.getElementById("resultado").innerText = `La palabra más larga es "${palabraLarga}" (${palabraLarga.length} caracteres).`;
+    }
+  </script>
+</body>
+</html>

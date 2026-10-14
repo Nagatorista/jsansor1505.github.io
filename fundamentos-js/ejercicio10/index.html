@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 10 - Número Mayor</title>
+  <link rel="stylesheet" href="../assets/styles/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Ejercicio 10: Número más grande en Array</h1>
+    <div class="enunciado">Encuentra el número mayor en un arreglo de números usando <code>Math.max()</code> y el operador spread (<code>...</code>).</div>
+
+    <div class="form-group">
+      <label for="numeros">Lista de números separados por coma:</label>
+      <input type="text" id="numeros" value="12, 45, 89, 2, 67, 34">
+    </div>
+    <button onclick="obtenerMayor()">Encontrar Mayor</button>
+
+    <div id="resultado" class="resultado-capa">Resultado...</div>
+  </div>
+
+  <script>
+    function encontrarMaximo(arr) {
+      return Math.max(...arr);
+    }
+
+    function obtenerMayor() {
+      const input = document.getElementById("numeros").value;
+      const arrayNums = input.split(",").map(n => Number(n.trim())).filter(n => !isNaN(n));
+      
+      if(arrayNums.length === 0) {
+        document.getElementById("resultado").innerText = "Ingresa números válidos.";
+        return;
+      }
+
+      const max = encontrarMaximo(arrayNums);
+      document.getElementById("resultado").innerText = `Array: [${arrayNums.join(", ")}]\nEl número mayor es: ${max}`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 11 - Frecuencia de Números</title>
+  <link rel="stylesheet" href="../assets/styles/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Ejercicio 11: Números Únicos Aparecidos</h1>
+    <div class="enunciado">
+      Genera 100 números aleatorios entre 1 y 20 y muestra cuántos y cuáles han aparecido al menos una vez.
+    </div>
+
+    <button onclick="generarYContar()">Generar y Contar</button>
+    <div id="resultado" class="resultado-capa">Haz clic para generar...</div>
+  </div>
+
+  <script>
+    function generarYContar() {
+      const numeros = Array.from({ length: 100 }, () => Math.floor(Math.random() * 20) + 1);
+      const unicos = new Set(numeros);
+
+      document.getElementById("resultado").innerText = 
+        `Se generaron 100 números.\n` +
+        `Cantidad de números distintos que aparecieron: ${unicos.size} de 20 posibles.\n` +
+        `Números que aparecieron: ${Array.from(unicos).sort((a,b)=>a-b).join(", ")}`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 7 - Contar Vocales</title>
+  <link rel="stylesheet" href="../assets/styles/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Ejercicio 7: Contar Vocales</h1>
+    <div class="enunciado">
+      Escribe una función que reciba una palabra y cuente cuántas vocales tiene utilizando un bucle <code>for</code> y el método <code>includes()</code>.
+    </div>
+
+    <div class="form-group">
+      <label for="palabra">Ingresa una palabra:</label>
+      <input type="text" id="palabra" placeholder="Ej: Javascript">
+    </div>
+    <button onclick="procesarVocales()">Contar Vocales</button>
+
+    <div id="resultado" class="resultado-capa">Resultado...</div>
+  </div>
+
+  <script>
+    function contarVocales(str) {
+      const vocales = "aeiouAEIOUáéíóúÁÉÍÓÚ";
+      let contador = 0;
+      for (let i = 0; i < str.length; i++) {
+        if (vocales.includes(str[i])) {
+          contador++;
+        }
+      }
+      return contador;
+    }
+
+    function procesarVocales() {
+      const palabra = document.getElementById("palabra").value;
+      const total = contarVocales(palabra);
+      document.getElementById("resultado").innerText = `La palabra "${palabra}" tiene ${total} vocal(es).`;
+    }
+  </script>
+</body>
+</html>

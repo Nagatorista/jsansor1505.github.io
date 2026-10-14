@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 6 - Par o Impar (Input)</title>
+  <link rel="stylesheet" href="../assets/styles/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Ejercicio 6: Par o Impar desde Input</h1>
+    <div class="enunciado">Modificación del programa anterior para obtener el número desde un campo de entrada (input).</div>
+
+    <div class="form-group">
+      <label for="numeroInput">Introduce un número:</label>
+      <input type="number" id="numeroInput" placeholder="Ej: 42">
+    </div>
+    <button onclick="verificarDesdeInput()">Verificar</button>
+
+    <div id="resultado" class="resultado-capa">Esperando entrada...</div>
+  </div>
+
+  <script>
+    function verificarDesdeInput() {
+      const val = document.getElementById("numeroInput").value;
+      if (val === "") {
+        document.getElementById("resultado").innerText = "Por favor, introduce un número válido.";
+        return;
+      }
+      const num = Number(val);
+      const resultado = num % 2 === 0 ? "PAR" : "IMPAR";
+      document.getElementById("resultado").innerText = `El número ${num} es ${resultado}.`;
+    }
+  </script>
+</body>
+</html>

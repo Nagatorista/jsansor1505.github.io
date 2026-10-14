@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 5 - Par o Impar</title>
+  <link rel="stylesheet" href="../assets/styles/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Ejercicio 5: Par o Impar (Prompt)</h1>
+    <div class="enunciado">Verifica si un número ingresado vía prompt es par o impar.</div>
+
+    <button onclick="verificarParImpar()">Ingresar Número</button>
+    <div id="resultado" class="resultado-capa">Resultado del análisis...</div>
+  </div>
+
+  <script>
+    function verificarParImpar() {
+      const entrada = prompt("Ingresa un número entero:");
+      if (entrada !== null && entrada.trim() !== "") {
+        const num = Number(entrada);
+        const esPar = num % 2 === 0;
+        const mensaje = `El número ${num} es ${esPar ? "PAR" : "IMPAR"}.`;
+        
+        console.log(mensaje);
+        document.getElementById("resultado").innerText = mensaje;
+      }
+    }
+  </script>
+</body>
+</html>

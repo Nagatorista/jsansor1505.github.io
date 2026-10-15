@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Cookies</title>
+</head>
+
+<body>
+
+<div class="panel">
+
+    <h1>Preferencias de usuario</h1>
+
+    <p>
+        Selecciona tus preferencias. Estas opciones se guardarán
+        mediante cookies.
+    </p>
+
+    <label>
+        <input type="checkbox" id="cookiesTecnicas">
+        Aceptar cookies técnicas<br>
+    </label>
+
+    <label>
+        <input type="checkbox" id="cookiesAnaliticas">
+        Aceptar cookies analíticas<br>
+    </label>
+
+    <label>
+        <input type="checkbox" id="cookiesPersonalizacion">
+        Aceptar cookies de personalización<br>
+    </label>
+
+    <button onclick="guardarPreferencias()">
+        Guardar preferencias
+    </button>
+    <div id="resultado"></div>
+
+</div>
+
+<script>
+
+function crearCookie(nombre, valor, dias) {
+
+    const fecha = new Date();
+
+    fecha.setTime(
+        fecha.getTime() + (dias * 24 * 60 * 60 * 1000)
+    );
+
+    const expires = "expires=" + fecha.toUTCString();
+
+    document.cookie =
+        nombre + "=" + valor + ";" + expires + ";path=/";
+}
+
+
+function leerCookie(nombre) {
+
+    const nombreCookie = nombre + "=";
+
+    const cookies = document.cookie.split(";");
+
+    for (let cookie of cookies) {
+
+        cookie = cookie.trim();
+
+        if (cookie.indexOf(nombreCookie) === 0) {
+
+            return cookie.substring(
+                nombreCookie.length,
+                cookie.length
+            );
+
+        }
+    }
+
+    return "";
+}
+
+
+function guardarPreferencias() {
+
+    const tecnicas =
+        document.getElementById("cookiesTecnicas").checked;
+
+    const analiticas =
+        document.getElementById("cookiesAnaliticas").checked;
+
+    const personalizacion =
+        document.getElementById("cookiesPersonalizacion").checked;
+
+
+    crearCookie(
+        "cookiesTecnicas",
+        tecnicas,
+        30
+    );
+
+    crearCookie(
+        "cookiesAnaliticas",
+        analiticas,
+        30
+    );
+
+    crearCookie(
+        "cookiesPersonalizacion",
+        personalizacion,
+        30
+    );
+
+
+    mostrarPreferencias();
+
+    alert("Preferencias guardadas correctamente.");
+}
+
+
+function cargarPreferencias() {
+
+    const tecnicas =
+        leerCookie("cookiesTecnicas");
+
+    const analiticas =
+        leerCookie("cookiesAnaliticas");
+
+    const personalizacion =
+        leerCookie("cookiesPersonalizacion");
+
+
+    if (tecnicas !== "") {
+
+        document.getElementById(
+            "cookiesTecnicas"
+        ).checked = (tecnicas === "true");
+
+    }
+
+
+    if (analiticas !== "") {
+
+        document.getElementById(
+            "cookiesAnaliticas"
+        ).checked = (analiticas === "true");
+
+    }
+
+
+    if (personalizacion !== "") {
+
+        document.getElementById(
+            "cookiesPersonalizacion"
+        ).checked = (personalizacion === "true");
+
+    }
+
+
+    mostrarPreferencias();
+}
+
+
+function mostrarPreferencias() {
+
+    const tecnicas =
+        leerCookie("cookiesTecnicas");
+
+    const analiticas =
+        leerCookie("cookiesAnaliticas");
+
+    const personalizacion =
+        leerCookie("cookiesPersonalizacion");
+
+
+    document.getElementById("resultado").innerHTML =
+
+        "<br><strong>Cookies almacenadas:</strong><br><br>" +
+
+        "Cookies técnicas: " + tecnicas + "<br>" +
+
+        "Cookies analíticas: " + analiticas + "<br>" +
+
+        "Cookies de personalización: " + personalizacion;
+}
+
+
+cargarPreferencias();
+
+</script>
+
+</body>
+</html>

@@ -9,7 +9,7 @@
   <div class="container">
     <h1>Ejercicio 1: Variables y Consola</h1>
     <div class="enunciado">
-      Declara variables de varios tipos. Muestra el contenido en la consola junto con el tipo de dato utilizando <code>console.log</code>, <code>console.error</code>, <code>console.info</code> y <code>console.debug</code>.
+      Declara variables de varios tipos. Muestra el contenido en la consola junto con el tipo de dato utilizando console.log, console.error, console.info y console.debug.
     </div>
 
     <button onclick="ejecutarEjercicio()">Ejecutar y Mostrar Variables</button>
@@ -18,6 +18,25 @@
     <p class="nota-consola">* Abre la consola del navegador (F12) para ver las salidas de consola con formato especial.</p>
   </div>
 
-  <script href="script.js"></script>
+  <script>
+    function ejecutarEjercicio() {
+      const texto = "Hola JavaScript";
+      const numero = 2026;
+      const booleano = true;
+      const objeto = { nombre: "Ana", edad: 25 };
+
+      console.log("console.log -> Cadena de texto:", texto, "| Tipo:", typeof texto);
+      console.info("console.info -> Número:", numero, "| Tipo:", typeof numero);
+      console.debug("console.debug -> Booleano:", booleano, "| Tipo:", typeof booleano);
+      console.error("console.error -> Objeto:", objeto, "| Tipo:", typeof objeto);
+
+      document.getElementById("resultado").innerText = 
+        `Variables declaradas:\n` +
+        `- texto: "${texto}" (${typeof texto})\n` +
+        `- numero: ${numero} (${typeof numero})\n` +
+        `- booleano: ${booleano} (${typeof booleano})\n` +
+        `- objeto: ${JSON.stringify(objeto)} (${typeof objeto})`;
+    }
+  </script>
 </body>
 </html>
